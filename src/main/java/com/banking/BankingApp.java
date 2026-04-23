@@ -1,5 +1,7 @@
 package com.banking;
 
+import com.banking.enums.AccountType;
+import com.banking.service.AccountService;
 import com.banking.service.CustomerService;
 
 public class BankingApp {
@@ -33,6 +35,32 @@ public class BankingApp {
         // create second customer service and print total count
         CustomerService secondService = new CustomerService();
         System.out.println("Second service customer count: " + secondService.getTotalCustomers());
+
+        // Create Account Service
+        AccountService service1 = new AccountService(service);
+
+        //initialise accounts
+        service1.createAccount(1L, AccountType.SAVINGS);
+        service1.createAccount(2L, AccountType.CURRENT);
+
+
+        //depositing 5000 into Varun's account
+        service1.deposit(1L, 5000.00);
+
+        //Withdrawing 2000 from varuns account
+        service1.withdraw(1L, 2000.00);
+
+        //catching exception by withdrwaing 10000
+        try{
+            service1.withdraw(1L, 10000.00);
+        }catch (RuntimeException e){
+            System.out.println("Caught: "+e.getMessage());
+        }
+
+
+
+
+
 
 
     }
