@@ -4,11 +4,17 @@ import com.banking.enums.AccountType;
 import com.banking.service.AccountService;
 import com.banking.service.CustomerService;
 import com.banking.service.TransactionService;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class BankingApp {
     public static void main(String[] args) {
 
-        CustomerService service = new CustomerService();
+
+        ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+        CustomerService service = context.getBean("customerService",CustomerService.class);
+
+       // CustomerService service = new CustomerService();
         service.registerCustomer("Varun", "Kumar", "varunyadavnanneboina@gmail.com","7981543038");
         service.registerCustomer("Arun", "AA", "ArunAA@gmail.com","324565");
         service.registerCustomer("Warlu", "VER", "Venkateshwarlu@gmail.com","7095527101");
@@ -38,7 +44,10 @@ public class BankingApp {
 //        System.out.println("Second service customer count: " + secondService.getTotalCustomers());
 
         // Create Account Service
-        AccountService service1 = new AccountService(service);
+        // here we don't need to pass customerService reference externally cause spring does for us
+        // in the beans.xml file
+        AccountService service1 = context.getBean("accountService", AccountService.class);
+
 
         //initialise accounts
         System.out.println("Account 1 created successfully"+ service1.createAccount(1L, AccountType.SAVINGS));
@@ -51,7 +60,7 @@ public class BankingApp {
 //        //Withdrawing 2000 from varuns account
 //        service1.withdraw(1L, 2000.00);
 
-        //catching exception by withdrwaing 10000
+        //catching exception by withdrawing 10000
         try{
             service1.withdraw(1L, 10000.00);
         }catch (RuntimeException e){
@@ -60,7 +69,8 @@ public class BankingApp {
 
 
         //Create TransactionService object
-        TransactionService s2 = new TransactionService(service1);
+       // TransactionService s2 = new TransactionService(service1);
+        TransactionService s2 = context.getBean("transactionService", TransactionService.class);
 
         // deposit it into customer Id 1
         System.out.println("Amount deposited into is: "+ s2.deposit(1L,3000.00));
@@ -68,12 +78,12 @@ public class BankingApp {
 
 
         //Transfer from account 1 to account 2
-        System.out.println("Transfering 500 from varuns account to Warlus Account: "+s2.transfer(1L,3L,500.00));
+        System.out.println("Transferring 500 from varun's account to Warlu's Account: "+s2.transfer(1L,2L,500.00));
 
         //printing all transactions
         System.out.println("All Transactions :"+s2.getAllTransactions());
 
-        //printitng all transactions for account 1
+        //printing all transactions for account 1
         System.out.println("Transactions for account 1: "+s2.getTransactionById(1L));
 
 
