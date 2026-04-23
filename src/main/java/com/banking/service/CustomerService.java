@@ -1,9 +1,11 @@
 package com.banking.service;
 
 import com.banking.model.Customer;
+import org.springframework.stereotype.Service;
 
 import java.util.*;
 
+@Service
 public class CustomerService {
 
     private Map<Long, Customer> customerDb = new HashMap<>();

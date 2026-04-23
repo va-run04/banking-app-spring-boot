@@ -1,20 +1,20 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
-       http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<beans xmlns="http://www.springframework.org/schema/beans"-->
+<!--       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+<!--       xsi:schemaLocation="http://www.springframework.org/schema/beans-->
+<!--       http://www.springframework.org/schema/beans/spring-beans.xsd">-->
 
-    <!-- Bean 1: CustomerService — no dependencies -->
-    <bean id="customerService" class="com.banking.service.CustomerService"/>
+<!--    &lt;!&ndash; Bean 1: CustomerService — no dependencies &ndash;&gt;-->
+<!--    <bean id="customerService" class="com.banking.service.CustomerService"/>-->
 
-    <!-- Bean 2: AccountService — depends on CustomerService -->
-    <bean id="accountService" class="com.banking.service.AccountService">
-        <constructor-arg ref="customerService"/>
-    </bean>
+<!--    &lt;!&ndash; Bean 2: AccountService — depends on CustomerService &ndash;&gt;-->
+<!--    <bean id="accountService" class="com.banking.service.AccountService">-->
+<!--        <constructor-arg ref="customerService"/>-->
+<!--    </bean>-->
 
-    <!-- Bean 3: TransactionService — depends on AccountService -->
-    <bean id="transactionService" class="com.banking.service.TransactionService">
-        <constructor-arg ref="accountService"/>
-    </bean>
+<!--    &lt;!&ndash; Bean 3: TransactionService — depends on AccountService &ndash;&gt;-->
+<!--    <bean id="transactionService" class="com.banking.service.TransactionService">-->
+<!--        <constructor-arg ref="accountService"/>-->
+<!--    </bean>-->
 
-</beans>
+<!--</beans>-->

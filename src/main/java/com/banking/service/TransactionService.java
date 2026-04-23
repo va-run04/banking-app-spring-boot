@@ -3,6 +3,8 @@ package com.banking.service;
 import com.banking.enums.TransactionType;
 import com.banking.model.Account;
 import com.banking.model.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -10,11 +12,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-
+@Service
 public class TransactionService {
     private final AccountService service;
     private Long nextId = 1L;
 
+    @Autowired
     public TransactionService(AccountService service) {
         this.service = service;
     }

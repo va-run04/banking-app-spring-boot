@@ -3,6 +3,8 @@ package com.banking.service;
 import com.banking.enums.AccountType;
 import com.banking.model.Account;
 import com.banking.model.Customer;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
@@ -10,6 +12,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+@Service
 public class AccountService {
     private final CustomerService customerService;
     //in memory database for account
@@ -17,6 +20,7 @@ public class AccountService {
     private Long nextId =   1L;
 
 
+    @Autowired
     public AccountService(CustomerService customerService) {
         this.customerService = customerService;
     }
