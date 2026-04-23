@@ -27,7 +27,8 @@ public class AccountService {
             if (!customerExists) {
                 throw new RuntimeException("Customer does not exist:"+customerId);
             }
-        Account account = new Account(nextId++, customerId, "ACC"+nextId, type);
+            Long id = nextId++;
+        Account account = new Account(id, customerId, "ACC"+id, type);
             accountServiceDb.put(account.getId(), account);
             return account;
     }
