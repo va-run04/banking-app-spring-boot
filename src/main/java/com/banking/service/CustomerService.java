@@ -1,15 +1,23 @@
 package com.banking.service;
 
 import com.banking.model.Customer;
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
-
+//@Scope("prototype")  // for prototype demo
 @Service
 public class CustomerService {
 
     private Map<Long, Customer> customerDb = new HashMap<>();
     private Long nextId =   1L;
+
+    @PostConstruct
+    public void init(){
+        System.out.println("Customer service bean is created and ready to use");
+    }
 
     public Customer registerCustomer(String firstName, String lastName, String email, String phone) {
 
@@ -63,5 +71,10 @@ public class CustomerService {
 
     public int getTotalCustomers() {
         return customerDb.size();
+    }
+
+    @PreDestroy
+    public void destroy(){
+        System.out.println("Customer service bean is being destroyedA");
     }
 }

@@ -13,8 +13,13 @@ public class BankingApp {
     public static void main(String[] args) {
 
 
-        ApplicationContext context = new AnnotationConfigApplicationContext(Appconfig.class);
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Appconfig.class);
         CustomerService service = context.getBean("customerService",CustomerService.class);
+
+        CustomerService cs1 = context.getBean(CustomerService.class);
+        CustomerService cs2 = context.getBean(CustomerService.class);
+
+        System.out.println("Same instance? " + (cs1 == cs2));
 
        // CustomerService service = new CustomerService();
         service.registerCustomer("Varun", "Kumar", "varunyadavnanneboina@gmail.com","7981543038");
@@ -89,6 +94,7 @@ public class BankingApp {
         System.out.println("Transactions for account 1: "+s2.getTransactionById(1L));
 
 
+        context.close();
 
     }
 }
