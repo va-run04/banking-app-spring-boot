@@ -3,6 +3,9 @@ package com.banking.model;
 import com.banking.enums.CustomerStatus;
 import com.banking.enums.Gender;
 import com.banking.enums.KycStatus;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Customer {
 
     private Long id;

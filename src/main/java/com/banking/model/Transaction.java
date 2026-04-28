@@ -1,7 +1,9 @@
 package com.banking.model;
 
 import com.banking.enums.TransactionType;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Transaction {
     private Long id;
     private Long accountId;

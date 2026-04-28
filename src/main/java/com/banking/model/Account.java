@@ -2,7 +2,9 @@ package com.banking.model;
 
 import com.banking.enums.AccountStatus;
 import com.banking.enums.AccountType;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Account {
     private Long id;
     private Long customerId;

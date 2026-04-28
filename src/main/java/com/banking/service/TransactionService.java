@@ -55,7 +55,7 @@ public class TransactionService {
         return transact;
     }
 
-    //Transfer method
+    //Transfer
     public Transaction transfer(Long fromAccountId,Long toAccountId, Double amount){
 
         Account fromAc = service.withdraw(fromAccountId, amount);
