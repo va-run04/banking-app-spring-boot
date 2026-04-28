@@ -18,7 +18,7 @@ public class CustomerService {
     public void init(){
         System.out.println("Customer service bean is created and ready to use");
     }
-
+    // RegisterCustomer
     public Customer registerCustomer(String firstName, String lastName, String email, String phone) {
 
         boolean emailExists = customerDb.values().stream().anyMatch(c -> c.getEmail().equals(email));
